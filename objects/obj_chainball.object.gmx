@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<object>
+  <spriteName>spr_2</spriteName>
+  <solid>0</solid>
+  <visible>-1</visible>
+  <depth>0</depth>
+  <persistent>0</persistent>
+  <maskName>&lt;undefined&gt;</maskName>
+  <parentName>&lt;undefined&gt;</parentName>
+  <events>
+    <event enumb="0" eventtype="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>local int chain_give = 128;&#13;
+&#13;
+local int radius = 12;&#13;
+local int chain_length = 136;&#13;
+local int link_length = 8;&#13;
+local int num_links = chain_length / link_length;&#13;
+&#13;
+local var link_x;&#13;
+local var link_y;&#13;
+local var link_v;&#13;
+&#13;
+local int max_pull = 3;&#13;
+&#13;
+local bool initialized = false;</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="2" eventtype="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// You know, n^2 looks pretty harsh when you write it out&#13;
+repeat num_links {&#13;
+  for (int i = 1; i &lt; num_links - 1; ++i) {&#13;
+    double ds = point_distance(link_x[i-1], link_y[i-1], link_x[i], link_y[i]);&#13;
+    if (ds &gt; link_length) {&#13;
+      double dir = point_direction(link_x[i-1], link_y[i-1], link_x[i], link_y[i]);&#13;
+      link_x[i] = link_x[i-1] + lengthdir_x(link_length, dir);&#13;
+      link_y[i] = link_y[i-1] + lengthdir_y(link_length, dir);&#13;
+    }&#13;
+  }&#13;
+  for (int i = num_links - 2; i &gt; 0; --i) {&#13;
+    double ds = point_distance(link_x[i+1], link_y[i+1], link_x[i], link_y[i]);&#13;
+    if (ds &gt; link_length) {&#13;
+      double dir = point_direction(link_x[i+1], link_y[i+1], link_x[i], link_y[i]);&#13;
+      link_x[i] = link_x[i+1] + lengthdir_x(link_length, dir);&#13;
+      link_y[i] = link_y[i+1] + lengthdir_y(link_length, dir);&#13;
+    }&#13;
+  }&#13;
+}</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="0" eventtype="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>double d = point_distance(x, y, obj_player.lfoot_x, obj_player.lfoot_y);&#13;
+if (d &gt; chain_give) {&#13;
+  double a = point_direction(x, y, obj_player.lfoot_x, obj_player.lfoot_y);&#13;
+  double dx = (obj_player.lfoot_x - x) - lengthdir_x(chain_give, a);&#13;
+  double dy = (obj_player.lfoot_y - y) - lengthdir_y(chain_give, a);&#13;
+  x += dx / 4;&#13;
+  y += dy / 4;&#13;
+  hspeed += dx / 5;&#13;
+  obj_player.x -= dx * 3 / 4;&#13;
+  obj_player.y -= dy * 3 / 4;&#13;
+}&#13;
+&#13;
+friction = .375;&#13;
+gravity = 1;&#13;
+double ground = trace_ray(x);&#13;
+double dx = radius / sqrt(2);&#13;
+double left = trace_ray(x - dx);&#13;
+double right = trace_ray(x + dx);&#13;
+if (y &lt; ground - radius) {&#13;
+  if (y &gt; min(left, right) - dx) {&#13;
+    y = min(left, right) - dx;&#13;
+    vspeed = 0;&#13;
+  }&#13;
+} else {&#13;
+  y = ground - radius;&#13;
+  vspeed = 0;&#13;
+}&#13;
+&#13;
+if (left &gt; right) {&#13;
+  hspeed -= .1 + (left - right) / 8;&#13;
+} else if (right &gt; left) {&#13;
+  hspeed += .1 + (right - left) / 8;&#13;
+}&#13;
+if (hspeed &gt; max_pull) {&#13;
+  hspeed = max_pull;&#13;
+} else if (hspeed &lt; -max_pull) {&#13;
+  hspeed = -max_pull;&#13;
+}</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>double dx = obj_player.lfoot_x - x;&#13;
+double dy = obj_player.lfoot_y - y;&#13;
+&#13;
+if (!initialized) {&#13;
+  double xi = dx / num_links;&#13;
+  double yi = dy / num_links;&#13;
+  for (int i = 0; i &lt; num_links; ++i) {&#13;
+    link_x[i] = x + xi * i;&#13;
+    link_y[i] = y + yi * i;&#13;
+    link_v[i] = 0;&#13;
+  }&#13;
+  initialized = true;&#13;
+}&#13;
+&#13;
+link_x[0] = x;&#13;
+link_y[0] = y;&#13;
+link_x[num_links - 1] = obj_player.lfoot_x;&#13;
+link_y[num_links - 1] = obj_player.lfoot_y;&#13;
+&#13;
+for (int i = 0; i &lt; num_links; ++i) {&#13;
+  link_y[i] += link_v[i];&#13;
+}&#13;
+for (int i = 0; i &lt; num_links; ++i) {&#13;
+  link_v[i] += 1;&#13;
+  double cast = trace_ray(link_x[i]);&#13;
+  if (link_y[i] &gt; cast - 3) {&#13;
+    link_y[i] = cast - 3;&#13;
+    link_v[i] = 0;&#13;
+  }&#13;
+}&#13;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="0" eventtype="8">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_circle(x, y, radius, false);&#13;
+for (int i = 0; i &lt; num_links; ++i) {&#13;
+  draw_circle(link_x[i], link_y[i], 3, true);&#13;
+}</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </events>
+  <PhysicsObject>0</PhysicsObject>
+  <PhysicsObjectSensor>0</PhysicsObjectSensor>
+  <PhysicsObjectShape>0</PhysicsObjectShape>
+  <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
+  <PhysicsObjectRestitution>0.1</PhysicsObjectRestitution>
+  <PhysicsObjectGroup>0</PhysicsObjectGroup>
+  <PhysicsObjectLinearDamping>0.1</PhysicsObjectLinearDamping>
+  <PhysicsObjectAngularDamping>0.1</PhysicsObjectAngularDamping>
+  <PhysicsObjectFriction>0.2</PhysicsObjectFriction>
+  <PhysicsObjectAwake>-1</PhysicsObjectAwake>
+  <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
+  <PhysicsShapePoints/>
+</object>

@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<object>
+  <spriteName>&lt;undefined&gt;</spriteName>
+  <solid>0</solid>
+  <visible>-1</visible>
+  <depth>0</depth>
+  <persistent>0</persistent>
+  <maskName>&lt;undefined&gt;</maskName>
+  <parentName>&lt;undefined&gt;</parentName>
+  <events>
+    <event enumb="0" eventtype="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>local double rtop = y;&#13;
+local double rbase = 16;&#13;
+local double ybase = y + 16;&#13;
+local double ground = y + 32;&#13;
+&#13;
+local var part_x;&#13;
+local var part_y;&#13;
+local var part_h;&#13;
+local var part_v;&#13;
+local var part_r;&#13;
+local int num_parts = 180;&#13;
+&#13;
+local var phase_dur;&#13;
+local int JUST_A_FOUNTAIN = 0;&#13;
+local int CREEP_PLAYER_OUT = 1;&#13;
+local int MAXIMUM_OVERCREEP = 2;&#13;
+local int CONGLOMERATING = 3;&#13;
+local int SENTIENT = 4;&#13;
+phase_dur[JUST_A_FOUNTAIN] = 60 * 15;&#13;
+phase_dur[CREEP_PLAYER_OUT] = 60 * 3;&#13;
+phase_dur[MAXIMUM_OVERCREEP] = 60 * 5;&#13;
+phase_dur[CONGLOMERATING] = 60 * 5;&#13;
+phase_dur[SENTIENT] = -1;&#13;
+local int phase = JUST_A_FOUNTAIN;&#13;
+&#13;
+for (int i = 0; i &lt; num_parts; ++i) {&#13;
+  part_x[i] = x;&#13;
+  part_y[i] = y;&#13;
+  part_r[i] = 1.5 + random(4);&#13;
+  double angle = random(360);&#13;
+  double vel = random(4) + 1;&#13;
+  part_h[i] = lengthdir_x(vel, angle);&#13;
+  part_v[i] = lengthdir_y(vel, angle);&#13;
+}&#13;
+&#13;
+local double antigravity = 0;&#13;
+&#13;
+local int cooldown = 0;</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="4" eventtype="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>phase = SENTIENT;</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="3" eventtype="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>phase = SENTIENT;</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="2" eventtype="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>phase = CONGLOMERATING;&#13;
+alarm[3] = phase_dur[CONGLOMERATING];</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="1" eventtype="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>y -= 100;&#13;
+phase = MAXIMUM_OVERCREEP;&#13;
+alarm[2] = 60 * 9;</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="0" eventtype="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>phase = CREEP_PLAYER_OUT;</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="0" eventtype="3">
+      <action>
+        <libid>1</libid>
+        <id>408</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>-1</isquestion>
+        <exetype>1</exetype>
+        <functionname>action_if</functionname>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>phase == JUST_A_FOUNTAIN || phase == CREEP_PLAYER_OUT</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (phase == JUST_A_FOUNTAIN &amp;&amp; obj_player.x &lt; x) {&#13;
+  alarm[0] = 60 * 5; // Ten second delay while player struggles&#13;
+}&#13;
+bool stillmoving = false;&#13;
+for (int i = 0; i &lt; num_parts; ++i) {&#13;
+  part_x[i] += part_h[i];&#13;
+  int cur = part_y[i];&#13;
+  part_y[i] += part_v[i];&#13;
+  &#13;
+  bool noslow = false;&#13;
+  if (cur &lt; ybase &amp;&amp; part_y[i] &gt;= ybase) {&#13;
+    if (abs(part_x[i] - x) &lt;= rbase) {&#13;
+      part_x[i] = x + random(rbase * 2) - rbase;&#13;
+      part_h[i] = (part_x[i] - x) / 16;&#13;
+      part_y[i] = ybase;&#13;
+      part_v[i] = 0;&#13;
+      noslow = true;&#13;
+    }&#13;
+  } else if (cur &gt;= ground + 64) {&#13;
+    part_x[i] = x;&#13;
+    part_y[i] = y;&#13;
+    part_r[i] = 1.5 + random(3);&#13;
+    double angle = random(180);&#13;
+    double vel = random(4) + 1;&#13;
+    part_h[i] = lengthdir_x(vel, angle);&#13;
+    part_v[i] = lengthdir_y(vel, angle);&#13;
+  }&#13;
+  double angle = random(360);&#13;
+  part_v[i] += .5 - antigravity;&#13;
+  if (phase == CREEP_PLAYER_OUT) {&#13;
+    antigravity += .0625;&#13;
+    if (part_v[i] &lt; 0) {&#13;
+      part_v[i] = 0;&#13;
+    }&#13;
+    if (part_h[i] &lt; 0) {&#13;
+      part_h[i] += .125;&#13;
+    }&#13;
+    if (part_h[i] &gt; 0) {&#13;
+      part_h[i] -= .125;&#13;
+    }&#13;
+    if (abs(part_h[i]) &lt; .125) {&#13;
+      part_h[i] = 0;&#13;
+    } else if (part_v &gt; 0) {&#13;
+      stillmoving = true;&#13;
+    }&#13;
+  }&#13;
+}&#13;
+if (phase == CREEP_PLAYER_OUT) {&#13;
+  if (stillmoving or alarm[1] == -1) {&#13;
+    alarm[1] = 60 * 4;&#13;
+  }&#13;
+}</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>421</id>
+        <kind>3</kind>
+        <userelative>0</userelative>
+        <useapplyto>0</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>0</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments/>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>612</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>-1</isquestion>
+        <exetype>1</exetype>
+        <functionname>action_if_variable</functionname>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>-1</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>phase</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>SENTIENT</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (phase == MAXIMUM_OVERCREEP) {&#13;
+  for (int i = 0; i &lt; num_parts; ++i) {&#13;
+    part_x[i] += part_h[i];&#13;
+    part_y[i] += part_v[i];&#13;
+    if (part_x[i] &lt; x) {&#13;
+      part_h[i] += 1 / 32.0;&#13;
+    } else if (part_x[i] &gt; x) {&#13;
+      part_h[i] -= 1 / 32.0;&#13;
+    }&#13;
+  }&#13;
+} else {&#13;
+  for (int i = 0; i &lt; num_parts; ++i) {&#13;
+    part_x[i] += part_h[i];&#13;
+    part_y[i] += part_v[i];&#13;
+    double dir = point_direction(part_x[i], part_y[i], x, y);&#13;
+    double dist = point_distance(part_x[i], part_y[i], x, y);&#13;
+    double adur = 60 * 5;&#13;
+    &#13;
+    double acc = .125;&#13;
+    if (dist &gt; 32) {&#13;
+      acc *= dist / 32;&#13;
+    }&#13;
+    double dur = phase_dur[CONGLOMERATING];&#13;
+    double amt = (dur - alarm[3]) / dur;&#13;
+    acc = lerp(.125, acc, amt);&#13;
+    &#13;
+    part_h[i] += lengthdir_x(acc, dir);&#13;
+    part_v[i] += lengthdir_y(acc, dir);&#13;
+  }&#13;
+}</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>421</id>
+        <kind>3</kind>
+        <userelative>0</userelative>
+        <useapplyto>0</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>0</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments/>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>for (int i = 0; i &lt; num_parts; ++i) {&#13;
+  part_x[i] += part_h[i];&#13;
+  part_y[i] += part_v[i];&#13;
+  double dist = point_distance(part_x[i], part_y[i], x, y);&#13;
+  double dir = point_direction(part_x[i], part_y[i], x, y);&#13;
+  double adur = 60 * 5;&#13;
+  &#13;
+  double acc = .125;&#13;
+  if (dist &gt; 32) {&#13;
+    acc *= dist / 32;&#13;
+  }&#13;
+  &#13;
+  part_h[i] += lengthdir_x(acc, dir);&#13;
+  part_v[i] += lengthdir_y(acc, dir);&#13;
+  if (hypot(part_h[i], part_v[i]) &gt; 4) {&#13;
+    part_h[i] *= .95;&#13;
+    part_v[i] *= .95;&#13;
+  }&#13;
+}&#13;
+&#13;
+if (y &gt; 128) {&#13;
+  y -= .5;&#13;
+} else {&#13;
+  // SPAM PROJECTILES&#13;
+  if (cooldown-- &lt;= 0) {&#13;
+    for (int i = 0; i &lt; 16; ++i) {&#13;
+      int projectile = instance_create(part_x[i], part_y[i], obj_ghostbullet);&#13;
+      projectile.hspeed = part_h[i];&#13;
+      projectile.vspeed = part_v[i];&#13;
+      projectile.target_x = obj_player.x;&#13;
+      projectile.target_y = obj_player.y;&#13;
+    }&#13;
+    cooldown = 180;&#13;
+  }&#13;
+}</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//room_caption = "Phase: " + string(phase);&#13;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="0" eventtype="8">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>for (int i = 0; i &lt; num_parts; ++i) {&#13;
+  draw_circle(part_x[i], part_y[i], part_r[i], false);&#13;
+}</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </events>
+  <PhysicsObject>0</PhysicsObject>
+  <PhysicsObjectSensor>0</PhysicsObjectSensor>
+  <PhysicsObjectShape>0</PhysicsObjectShape>
+  <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
+  <PhysicsObjectRestitution>0.1</PhysicsObjectRestitution>
+  <PhysicsObjectGroup>0</PhysicsObjectGroup>
+  <PhysicsObjectLinearDamping>0.1</PhysicsObjectLinearDamping>
+  <PhysicsObjectAngularDamping>0.1</PhysicsObjectAngularDamping>
+  <PhysicsObjectFriction>0.2</PhysicsObjectFriction>
+  <PhysicsObjectAwake>-1</PhysicsObjectAwake>
+  <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
+  <PhysicsShapePoints/>
+</object>

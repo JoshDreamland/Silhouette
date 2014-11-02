@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<assets>
+  <Configs name="configs">
+    <Config>Configs\Default</Config>
+  </Configs>
+  <sprites name="sprites">
+    <sprite>sprites\spr_0</sprite>
+    <sprite>sprites\spr_1</sprite>
+    <sprite>sprites\spr_2</sprite>
+  </sprites>
+  <sounds name="sound"/>
+  <backgrounds name="background"/>
+  <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\make_ground.gml</script>
+    <script>scripts\draw_grass_blade.gml</script>
+    <script>scripts\draw_player_head.gml</script>
+    <script>scripts\trace_ray.gml</script>
+    <script>scripts\scr_4.gml</script>
+  </scripts>
+  <shaders name="shaders"/>
+  <fonts name="fonts"/>
+  <timelines name="timelines"/>
+  <objects name="objects">
+    <object>objects\obj_scenery</object>
+    <object>objects\obj_bush</object>
+    <object>objects\obj_groundnode</object>
+    <object>objects\obj_player</object>
+    <object>objects\obj_fountain</object>
+    <object>objects\obj_waterghost</object>
+    <object>objects\obj_chainball</object>
+    <object>objects\obj_ghostbullet</object>
+  </objects>
+  <rooms name="rooms">
+    <room>rooms\rm_0</room>
+    <room>rooms\rm_1</room>
+    <room>rooms\rm_2</room>
+  </rooms>
+  <help>
+    <rtf>help.rtf</rtf>
+  </help>
+</assets>

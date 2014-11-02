@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<object>
+  <spriteName>spr_2</spriteName>
+  <solid>0</solid>
+  <visible>-1</visible>
+  <depth>0</depth>
+  <persistent>0</persistent>
+  <maskName>&lt;undefined&gt;</maskName>
+  <parentName>&lt;undefined&gt;</parentName>
+  <events>
+    <event enumb="0" eventtype="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>local double lfoot_x = x - 8;&#13;
+local double lfoot_y = y;&#13;
+local double rfoot_x = x + 8;&#13;
+local double rfoot_y = y;&#13;
+&#13;
+local double lhand_x = x - 4;&#13;
+local double lhand_y = y - 20;&#13;
+local double rhand_x = x + 4;&#13;
+local double rhand_y = y - 20;&#13;
+&#13;
+local double lfoot_lastx = lfoot_x;&#13;
+local double lfoot_lasty = lfoot_y;&#13;
+local double rfoot_lastx = rfoot_x;&#13;
+local double rfoot_lasty = rfoot_y;&#13;
+&#13;
+local double foot_phase = 0;&#13;
+local int facing_dir = 1;&#13;
+&#13;
+local int which_foot;&#13;
+local int LEFT_FOOT = 1;&#13;
+local int RIGHT_FOOT = 2;&#13;
+&#13;
+local int extra_cycles = 0;&#13;
+&#13;
+local double lknee_x = x - 8;&#13;
+local double lknee_y = y - 12;&#13;
+local double rknee_x = x + 8;&#13;
+local double rknee_y = y - 12;&#13;
+&#13;
+local double torso_elevation = 24;&#13;
+local double torso_height = 16;&#13;
+local double leg_length = 12;&#13;
+&#13;
+local double pelvis_y = y - torso_elevation;&#13;
+&#13;
+gravity = .75;&#13;
+&#13;
+local bool onground = false;&#13;
+local bool was_onground = false;&#13;
+&#13;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="2" eventtype="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>double crouch_factor = abs(hspeed) / 8.0;&#13;
+double foot_x, foot_y, knee_x, knee_y, dx;&#13;
+&#13;
+pelvis_y = y - torso_elevation + 10*crouch_factor;&#13;
+&#13;
+if (!onground || !was_onground) {&#13;
+  was_onground = onground;&#13;
+  lfoot_x += x - xprevious - .25;&#13;
+  lfoot_y += y - yprevious;&#13;
+  rfoot_x += x - xprevious + .25;&#13;
+  rfoot_y += y - yprevious;&#13;
+  if (rfoot_x &lt; x + leg_length / 2) {&#13;
+    rfoot_x += 1;&#13;
+  }&#13;
+  if (lfoot_x &gt; x - leg_length / 4) {&#13;
+    lfoot_x -= 1;&#13;
+  }&#13;
+  if ((facing_dir &gt; 0? rfoot_y : lfoot_y) &gt; pelvis_y + 8) {&#13;
+    (facing_dir &gt; 0? rfoot_y : lfoot_y) -= 1;&#13;
+  } else {&#13;
+    (facing_dir &gt; 0? rfoot_y : lfoot_y) = pelvis_y + 8;&#13;
+  }&#13;
+  if (facing_dir &gt; 0? rfoot_x &lt; x + 3 : lfoot_x &gt; x - 3) {&#13;
+    facing_dir &gt; 0? (rfoot_x = x + 3) : (lfoot_x = x - 3);&#13;
+  }&#13;
+  foot_phase = 0;&#13;
+  which_foot = facing_dir &gt; 0? RIGHT_FOOT : LEFT_FOOT;&#13;
+  lfoot_lastx = lfoot_x;&#13;
+  lfoot_lasty = lfoot_y;&#13;
+  rfoot_lastx = rfoot_x;&#13;
+  rfoot_lasty = rfoot_y;&#13;
+} else if (which_foot) {&#13;
+  if (which_foot == LEFT_FOOT) {&#13;
+    foot_x = lfoot_lastx;&#13;
+    foot_y = lfoot_lasty;&#13;
+    dx = -8;&#13;
+  } else {&#13;
+    foot_x = rfoot_lastx ;&#13;
+    foot_y = rfoot_lasty ;&#13;
+    dx = 8;&#13;
+  }&#13;
+  &#13;
+  foot_x = lerp(foot_x, x + hspeed + dx, sin(foot_phase / 2));&#13;
+  foot_y = lerp(foot_y, y + vspeed,      sin(foot_phase / 2)) - 7*crouch_factor*sin(foot_phase);&#13;
+  &#13;
+  if (which_foot == LEFT_FOOT) {&#13;
+    lfoot_x = foot_x;&#13;
+    lfoot_y = foot_y;&#13;
+  } else {&#13;
+    rfoot_x = foot_x;&#13;
+    rfoot_y = foot_y;&#13;
+  }&#13;
+  &#13;
+  if (foot_phase &lt; pi) {&#13;
+    foot_phase += pi / 5;&#13;
+    if (foot_phase &gt; pi) {&#13;
+      foot_phase = pi;&#13;
+    }&#13;
+  } else {&#13;
+    if (which_foot == RIGHT_FOOT) {&#13;
+      which_foot = LEFT_FOOT;&#13;
+      rfoot_lastx = foot_x;&#13;
+      rfoot_lasty = foot_y;&#13;
+    } else {&#13;
+      which_foot = RIGHT_FOOT;&#13;
+      lfoot_lastx = foot_x;&#13;
+      lfoot_lasty = foot_y;&#13;
+    }&#13;
+    foot_phase = 0;&#13;
+    if (abs(hspeed) &lt; .01) {&#13;
+      if (extra_cycles &lt;= 0) {&#13;
+      	which_foot = 0;&#13;
+      } else {&#13;
+        //--extra_cycles;&#13;
+      }&#13;
+    }&#13;
+  }&#13;
+}&#13;
+if (abs(hspeed) &gt; .01) {&#13;
+  if (!which_foot) {&#13;
+    which_foot = RIGHT_FOOT;&#13;
+  }&#13;
+  extra_cycles = 1;&#13;
+}&#13;
+&#13;
+foot_x = lfoot_x;&#13;
+foot_y = lfoot_y;&#13;
+bool doneloop = false;&#13;
+int face_angle = facing_dir &gt; 0? 90 : -90;&#13;
+&#13;
+repeat (2) {&#13;
+  double fdir = point_direction(x, pelvis_y, foot_x, foot_y);&#13;
+  double fdist = point_distance(x, pelvis_y, foot_x, foot_y);&#13;
+  if (fdist &gt; leg_length * 2) {&#13;
+    foot_x = x + lengthdir_x(leg_length * 2, fdir);&#13;
+    foot_y = pelvis_y + lengthdir_y(leg_length * 2, fdir);&#13;
+    knee_x = (foot_x + x) / 2;&#13;
+    knee_y = (foot_y + pelvis_y) / 2;&#13;
+  } else {&#13;
+    double apoth = sqrt(leg_length * leg_length - fdist * fdist / 4);&#13;
+    knee_x = (foot_x + x) / 2 + lengthdir_x(apoth, fdir + face_angle);&#13;
+    knee_y = (foot_y + pelvis_y) / 2 + lengthdir_y(apoth, fdir + face_angle);&#13;
+  }&#13;
+  &#13;
+  if (!doneloop) {&#13;
+    lfoot_x = foot_x;&#13;
+    lfoot_y = foot_y;&#13;
+    lknee_x = knee_x;&#13;
+    lknee_y = knee_y;&#13;
+    &#13;
+    foot_x = rfoot_x;&#13;
+    foot_y = rfoot_y;&#13;
+    doneloop = true;&#13;
+  } else {&#13;
+    rfoot_x = foot_x;&#13;
+    rfoot_y = foot_y;&#13;
+    rknee_x = knee_x;&#13;
+    rknee_y = knee_y;&#13;
+  }&#13;
+}&#13;
+m_yprevious = y;</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="0" eventtype="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>double target = trace_ray(x);&#13;
+if (y &lt; target) {&#13;
+  if (y &gt; room_height + 640) {&#13;
+    x = xstart;&#13;
+    y = ystart;&#13;
+    with (obj_chainball) {&#13;
+      x = xstart;&#13;
+      y = ystart;&#13;
+    }&#13;
+  }&#13;
+  onground = false;&#13;
+} else {&#13;
+  y = target;&#13;
+  vspeed = 0;&#13;
+  onground = true;&#13;
+}</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>int input_dir = (keyboard_check(vk_right) or keyboard_check(ord('D'))) - (keyboard_check(vk_left) or keyboard_check(ord('A')));&#13;
+if (input_dir) {&#13;
+  facing_dir = input_dir;&#13;
+}&#13;
+input_dir &lt;&lt;= 2;&#13;
+if (input_dir &gt; hspeed) {&#13;
+  hspeed += .25;&#13;
+} else if (input_dir &lt; hspeed) {&#13;
+  hspeed -= .25;&#13;
+}&#13;
+&#13;
+bool jmpkey = keyboard_check(vk_up) or keyboard_check(ord('Z')) or keyboard_check(vk_space);&#13;
+if (onground) {&#13;
+  if (jmpkey) {&#13;
+    vspeed = -12;&#13;
+  }&#13;
+} else if (false and jmpkey) {&#13;
+  if (vspeed &gt; -2)&#13;
+    vspeed = -2;&#13;
+}</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="0" eventtype="8">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_player_head(x, pelvis_y - torso_height + 2);&#13;
+&#13;
+draw_line_width(lfoot_x, lfoot_y, lknee_x, lknee_y, 7);&#13;
+draw_line_width(lknee_x, lknee_y, x - 2, pelvis_y, 7);&#13;
+draw_circle(lknee_x, lknee_y, 3.5, 0);&#13;
+&#13;
+draw_line_width(rfoot_x, rfoot_y, rknee_x, rknee_y, 7);&#13;
+draw_line_width(rknee_x, rknee_y, x + 2, pelvis_y, 7);&#13;
+draw_circle(rknee_x, rknee_y, 3.5, 0);&#13;
+&#13;
+draw_circle(x - 2, pelvis_y, 3.5, 0);&#13;
+draw_circle(x + 2, pelvis_y, 3.5, 0);&#13;
+&#13;
+&#13;
+double collar_y = pelvis_y - torso_height&#13;
+draw_line_width(x , pelvis_y, x, pelvis_y - torso_height, 7);&#13;
+draw_line_width(x , pelvis_y, x, pelvis_y - torso_height, 7);&#13;
+&#13;
+room_caption = "Silhouette (" + string(fps) + "/60 fps)";</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </events>
+  <PhysicsObject>0</PhysicsObject>
+  <PhysicsObjectSensor>0</PhysicsObjectSensor>
+  <PhysicsObjectShape>0</PhysicsObjectShape>
+  <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
+  <PhysicsObjectRestitution>0.1</PhysicsObjectRestitution>
+  <PhysicsObjectGroup>0</PhysicsObjectGroup>
+  <PhysicsObjectLinearDamping>0.1</PhysicsObjectLinearDamping>
+  <PhysicsObjectAngularDamping>0.1</PhysicsObjectAngularDamping>
+  <PhysicsObjectFriction>0.2</PhysicsObjectFriction>
+  <PhysicsObjectAwake>-1</PhysicsObjectAwake>
+  <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
+  <PhysicsShapePoints/>
+</object>
