@@ -30,6 +30,7 @@ local var trail_x;&#13;
 local var trail_y;&#13;
 local int trail_count = 12;&#13;
 local bool homing = true;&#13;
+local double vmax = 1;&#13;
 &#13;
 for (int i = 0; i &lt; trail_count; ++i) {&#13;
   trail_x[i] = x;&#13;
@@ -70,15 +71,20 @@ if (homing) {&#13;
   double dir = point_direction(x, y, target_x, target_y);&#13;
   hspeed += lengthdir_x(max(.125, time_alive/64.0), dir);&#13;
   vspeed += lengthdir_y(max(.125, time_alive/64.0), dir);&#13;
-  if (speed &gt; 4) {&#13;
-    speed = 4;&#13;
+  if (speed &gt; vmax) {&#13;
+    speed = vmax;&#13;
   }&#13;
-  if (point_distance(x, y, target_x, target_y) &lt; 8 || ++time_alive &gt; 60 * 10) {&#13;
+  if (point_distance(x, y, target_x, target_y) &lt; 32 || ++time_alive &gt; 60 * 10) {&#13;
     homing = false;&#13;
   }&#13;
 }&#13;
 &#13;
-if (y &gt; room_width + 128) {&#13;
+if (y &gt; trace_ray(x)) {&#13;
+  homing = false;&#13;
+  y = 100000;&#13;
+}&#13;
+&#13;
+if (trail_y[0] &gt; view_yview[0] + view_hview[0] + 128 or trail_x[0] &gt; view_xview[0] + view_wview[0] + 256) {&#13;
   instance_destroy();&#13;
 }</string>
           </argument>
@@ -102,12 +108,12 @@ if (y &gt; room_width + 128) {&#13;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(c_white);&#13;
+            <string>//draw_set_color(c_white);&#13;
 for (int i = 0; i &lt; trail_count; ++i) {&#13;
   draw_set_alpha(i / trail_count);&#13;
   draw_circle(trail_x[i], trail_y[i], 3, false);&#13;
 }&#13;
-draw_set_color(c_black);&#13;
+//draw_set_color(c_black);&#13;
 draw_set_alpha(1);&#13;
 draw_circle(x, y, 3, false);</string>
           </argument>

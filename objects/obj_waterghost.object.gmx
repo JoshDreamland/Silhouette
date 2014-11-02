@@ -45,8 +45,8 @@ local int CONGLOMERATING = 3;&#13;
 local int SENTIENT = 4;&#13;
 phase_dur[JUST_A_FOUNTAIN] = 60 * 15;&#13;
 phase_dur[CREEP_PLAYER_OUT] = 60 * 3;&#13;
-phase_dur[MAXIMUM_OVERCREEP] = 60 * 5;&#13;
-phase_dur[CONGLOMERATING] = 60 * 5;&#13;
+phase_dur[MAXIMUM_OVERCREEP] = 60 * 9;&#13;
+phase_dur[CONGLOMERATING] = 60 * 3;&#13;
 phase_dur[SENTIENT] = -1;&#13;
 local int phase = JUST_A_FOUNTAIN;&#13;
 &#13;
@@ -62,7 +62,8 @@ for (int i = 0; i &lt; num_parts; ++i) {&#13;
 &#13;
 local double antigravity = 0;&#13;
 &#13;
-local int cooldown = 0;</string>
+local int cooldown = 0;&#13;
+local int shots_fired = 0;</string>
           </argument>
         </arguments>
       </action>
@@ -153,7 +154,7 @@ alarm[3] = phase_dur[CONGLOMERATING];</string>
             <kind>1</kind>
             <string>y -= 100;&#13;
 phase = MAXIMUM_OVERCREEP;&#13;
-alarm[2] = 60 * 9;</string>
+alarm[2] = phase_dur[phase];</string>
           </argument>
         </arguments>
       </action>
@@ -395,7 +396,8 @@ if (phase == CREEP_PLAYER_OUT) {&#13;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for (int i = 0; i &lt; num_parts; ++i) {&#13;
+            <string>double pvmax = max(4, 2 + abs(hspeed));&#13;
+for (int i = 0; i &lt; num_parts; ++i) {&#13;
   part_x[i] += part_h[i];&#13;
   part_y[i] += part_v[i];&#13;
   double dist = point_distance(part_x[i], part_y[i], x, y);&#13;
@@ -406,10 +408,13 @@ if (phase == CREEP_PLAYER_OUT) {&#13;
   if (dist &gt; 32) {&#13;
     acc *= dist / 32;&#13;
   }&#13;
+  if (dist &lt; 8) {&#13;
+    acc /= sqr((dist + 1)/9);&#13;
+  }&#13;
   &#13;
   part_h[i] += lengthdir_x(acc, dir);&#13;
   part_v[i] += lengthdir_y(acc, dir);&#13;
-  if (hypot(part_h[i], part_v[i]) &gt; 4) {&#13;
+  if (hypot(part_h[i], part_v[i]) &gt; pvmax) {&#13;
     part_h[i] *= .95;&#13;
     part_v[i] *= .95;&#13;
   }&#13;
@@ -419,16 +424,31 @@ if (y &gt; 128) {&#13;
   y -= .5;&#13;
 } else {&#13;
   // SPAM PROJECTILES&#13;
+  double dtt = point_distance(x, y, obj_player.x, obj_player.y);&#13;
+  double tx = obj_player.x + obj_player.hspeed * dtt / 24;&#13;
   if (cooldown-- &lt;= 0) {&#13;
     for (int i = 0; i &lt; 16; ++i) {&#13;
       int projectile = instance_create(part_x[i], part_y[i], obj_ghostbullet);&#13;
       projectile.hspeed = part_h[i];&#13;
       projectile.vspeed = part_v[i];&#13;
-      projectile.target_x = obj_player.x;&#13;
+      projectile.target_x = tx;&#13;
       projectile.target_y = obj_player.y;&#13;
+      projectile.vmax = min(4 + shots_fired, 8);&#13;
     }&#13;
+    ++shots_fired;&#13;
     cooldown = 180;&#13;
   }&#13;
+}&#13;
+&#13;
+if (x &lt; obj_player.x - 300) {&#13;
+  hspeed += .5;&#13;
+} else if (x &gt; obj_player.x + 200) {&#13;
+  hspeed -= .5;&#13;
+} else {&#13;
+  speed *= .95;&#13;
+}&#13;
+if (speed &gt; 8) {&#13;
+  speed = 8;&#13;
 }</string>
           </argument>
         </arguments>

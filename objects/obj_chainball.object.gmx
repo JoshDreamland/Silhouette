@@ -32,6 +32,9 @@ local int chain_length = 136;&#13;
 local int link_length = 8;&#13;
 local int num_links = chain_length / link_length;&#13;
 &#13;
+local int chain_broke_start = num_links;&#13;
+local int chain_broke_end = 0;&#13;
+&#13;
 local var link_x;&#13;
 local var link_y;&#13;
 local var link_v;&#13;
@@ -62,7 +65,7 @@ local bool initialized = false;</string>
             <kind>1</kind>
             <string>// You know, n^2 looks pretty harsh when you write it out&#13;
 repeat num_links {&#13;
-  for (int i = 1; i &lt; num_links - 1; ++i) {&#13;
+  for (int i = 1; i &lt; chain_broke_start - 1; ++i) {&#13;
     double ds = point_distance(link_x[i-1], link_y[i-1], link_x[i], link_y[i]);&#13;
     if (ds &gt; link_length) {&#13;
       double dir = point_direction(link_x[i-1], link_y[i-1], link_x[i], link_y[i]);&#13;
@@ -70,7 +73,7 @@ repeat num_links {&#13;
       link_y[i] = link_y[i-1] + lengthdir_y(link_length, dir);&#13;
     }&#13;
   }&#13;
-  for (int i = num_links - 2; i &gt; 0; --i) {&#13;
+  for (int i = num_links - 2; i &gt; chain_broke_end; --i) {&#13;
     double ds = point_distance(link_x[i+1], link_y[i+1], link_x[i], link_y[i]);&#13;
     if (ds &gt; link_length) {&#13;
       double dir = point_direction(link_x[i+1], link_y[i+1], link_x[i], link_y[i]);&#13;
@@ -101,7 +104,7 @@ repeat num_links {&#13;
           <argument>
             <kind>1</kind>
             <string>double d = point_distance(x, y, obj_player.lfoot_x, obj_player.lfoot_y);&#13;
-if (d &gt; chain_give) {&#13;
+if (d &gt; chain_give &amp;&amp; chain_broke_start &gt; chain_broke_end) {&#13;
   double a = point_direction(x, y, obj_player.lfoot_x, obj_player.lfoot_y);&#13;
   double dx = (obj_player.lfoot_x - x) - lengthdir_x(chain_give, a);&#13;
   double dy = (obj_player.lfoot_y - y) - lengthdir_y(chain_give, a);&#13;
@@ -186,8 +189,51 @@ for (int i = 0; i &lt; num_links; ++i) {&#13;
     link_y[i] = cast - 3;&#13;
     link_v[i] = 0;&#13;
   }&#13;
-}&#13;
-</string>
+}</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>for (int i = 4; i &lt; num_links - 4; ++i) {&#13;
+  if (i &gt;= broken_start &amp;&amp; i &lt; broken_end) {&#13;
+    continue;&#13;
+  }&#13;
+  float lx = (float)link_x[i];&#13;
+  float ly = (float)link_y[i];&#13;
+  bool hit = false;&#13;
+  with (obj_ghostbullet) {&#13;
+    float dx, dy;&#13;
+    dx = (float)x - lx;&#13;
+    dy = (float)y - ly;&#13;
+    if (dx * dx + dy * dy &lt; 36) {&#13;
+      hit = true;&#13;
+      break;&#13;
+    }&#13;
+  }&#13;
+  if (hit) {&#13;
+    if (i &lt; chain_broke_start) {&#13;
+      chain_broke_start = i;&#13;
+    }&#13;
+    if (i &gt; chain_broke_end) {&#13;
+      chain_broke_end = i;&#13;
+    }&#13;
+  }&#13;
+}</string>
           </argument>
         </arguments>
       </action>
