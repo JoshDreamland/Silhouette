@@ -28,7 +28,7 @@
             <string>local int chain_give = 128;&#13;
 &#13;
 local int radius = 12;&#13;
-local int chain_length = 136;&#13;
+local int chain_length = 128;&#13;
 local int link_length = 8;&#13;
 local int num_links = chain_length / link_length;&#13;
 &#13;
@@ -69,16 +69,24 @@ repeat num_links {&#13;
     double ds = point_distance(link_x[i-1], link_y[i-1], link_x[i], link_y[i]);&#13;
     if (ds &gt; link_length) {&#13;
       double dir = point_direction(link_x[i-1], link_y[i-1], link_x[i], link_y[i]);&#13;
+      double cast = trace_ray(link_x[i]);&#13;
       link_x[i] = link_x[i-1] + lengthdir_x(link_length, dir);&#13;
       link_y[i] = link_y[i-1] + lengthdir_y(link_length, dir);&#13;
+      if (link_y[i] &gt; cast - 3) {&#13;
+        link_y[i] = cast - 3;&#13;
+      }&#13;
     }&#13;
   }&#13;
   for (int i = num_links - 2; i &gt; chain_broke_end; --i) {&#13;
     double ds = point_distance(link_x[i+1], link_y[i+1], link_x[i], link_y[i]);&#13;
     if (ds &gt; link_length) {&#13;
       double dir = point_direction(link_x[i+1], link_y[i+1], link_x[i], link_y[i]);&#13;
+      double cast = trace_ray(link_x[i]);&#13;
       link_x[i] = link_x[i+1] + lengthdir_x(link_length, dir);&#13;
       link_y[i] = link_y[i+1] + lengthdir_y(link_length, dir);&#13;
+      if (link_y[i] &gt; cast - 3) {&#13;
+        link_y[i] = cast - 3;&#13;
+      }&#13;
     }&#13;
   }&#13;
 }</string>
@@ -255,9 +263,18 @@ for (int i = 0; i &lt; num_links; ++i) {&#13;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_circle(x, y, radius, false);&#13;
+            <string>const int LINK_RAD = 3;&#13;
+draw_circle(x, y, radius, false);&#13;
 for (int i = 0; i &lt; num_links; ++i) {&#13;
-  draw_circle(link_x[i], link_y[i], 3, true);&#13;
+  draw_circle(link_x[i], link_y[i], LINK_RAD, true);&#13;
+}&#13;
+double d = point_distance(x, y, link_x[1], link_y[1]);&#13;
+if (d &gt; radius + LINK_RAD) {&#13;
+  double dir = point_direction(x, y, link_x[1], link_y[1]);&#13;
+  while (d &gt; radius + LINK_RAD) {&#13;
+    d -= LINK_RAD + LINK_RAD;&#13;
+    draw_circle(x + lengthdir_x(d, dir), y + lengthdir_y(d, dir), LINK_RAD, true);&#13;
+  }&#13;
 }</string>
           </argument>
         </arguments>

@@ -63,9 +63,7 @@ local double pelvis_y = y - torso_elevation;&#13;
 gravity = .75;&#13;
 &#13;
 local bool onground = false;&#13;
-local bool was_onground = false;&#13;
-&#13;
-</string>
+local bool was_onground = false;</string>
           </argument>
         </arguments>
       </action>
@@ -305,7 +303,7 @@ if (onground) {&#13;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_player_head(x, pelvis_y - torso_height + 2);&#13;
+            <string>draw_player_head(x, pelvis_y - torso_height + 2, 0, facing_dir);&#13;
 &#13;
 draw_line_width(lfoot_x, lfoot_y, lknee_x, lknee_y, 7);&#13;
 draw_line_width(lknee_x, lknee_y, x - 2, pelvis_y, 7);&#13;
