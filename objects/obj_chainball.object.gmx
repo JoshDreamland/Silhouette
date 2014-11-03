@@ -63,7 +63,12 @@ local bool initialized = false;</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// You know, n^2 looks pretty harsh when you write it out&#13;
+            <string>link_x[0] = x;&#13;
+link_y[0] = y;&#13;
+link_x[num_links - 1] = obj_player.lfoot_x;&#13;
+link_y[num_links - 1] = obj_player.lfoot_y;&#13;
+&#13;
+// You know, n^2 looks pretty harsh when you write it out&#13;
 repeat num_links {&#13;
   for (int i = 1; i &lt; chain_broke_start - 1; ++i) {&#13;
     double ds = point_distance(link_x[i-1], link_y[i-1], link_x[i], link_y[i]);&#13;

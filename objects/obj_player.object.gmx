@@ -227,21 +227,25 @@ m_yprevious = y;</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>double target = trace_ray(x);&#13;
-if (y &lt; target) {&#13;
-  if (y &gt; room_height + 640) {&#13;
-    x = xstart;&#13;
-    y = ystart;&#13;
-    with (obj_chainball) {&#13;
-      x = xstart;&#13;
-      y = ystart;&#13;
-    }&#13;
+            <string>int input_dir = (keyboard_check(vk_right) or keyboard_check(ord('D'))) - (keyboard_check(vk_left) or keyboard_check(ord('A')));&#13;
+if (input_dir) {&#13;
+  facing_dir = input_dir;&#13;
+}&#13;
+input_dir &lt;&lt;= 2;&#13;
+if (input_dir &gt; hspeed) {&#13;
+  hspeed += .25;&#13;
+} else if (input_dir &lt; hspeed) {&#13;
+  hspeed -= .25;&#13;
+}&#13;
+&#13;
+bool jmpkey = keyboard_check(vk_up) or keyboard_check(ord('Z')) or keyboard_check(vk_space);&#13;
+if (onground) {&#13;
+  if (jmpkey) {&#13;
+    vspeed = -12;&#13;
   }&#13;
-  onground = false;&#13;
-} else {&#13;
-  y = target;&#13;
-  vspeed = 0;&#13;
-  onground = true;&#13;
+} else if (false and jmpkey) {&#13;
+  if (vspeed &gt; -2)&#13;
+    vspeed = -2;&#13;
 }</string>
           </argument>
         </arguments>
@@ -262,25 +266,23 @@ if (y &lt; target) {&#13;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>int input_dir = (keyboard_check(vk_right) or keyboard_check(ord('D'))) - (keyboard_check(vk_left) or keyboard_check(ord('A')));&#13;
-if (input_dir) {&#13;
-  facing_dir = input_dir;&#13;
-}&#13;
-input_dir &lt;&lt;= 2;&#13;
-if (input_dir &gt; hspeed) {&#13;
-  hspeed += .25;&#13;
-} else if (input_dir &lt; hspeed) {&#13;
-  hspeed -= .25;&#13;
-}&#13;
-&#13;
-bool jmpkey = keyboard_check(vk_up) or keyboard_check(ord('Z')) or keyboard_check(vk_space);&#13;
-if (onground) {&#13;
-  if (jmpkey) {&#13;
-    vspeed = -12;&#13;
+            <string>double target = trace_ray(x);&#13;
+if (y &lt; target - 8) {&#13;
+  if (y &gt; room_height + 640) {&#13;
+    x = xstart;&#13;
+    y = ystart;&#13;
+    with (obj_chainball) {&#13;
+      x = xstart;&#13;
+      y = ystart;&#13;
+    }&#13;
   }&#13;
-} else if (false and jmpkey) {&#13;
-  if (vspeed &gt; -2)&#13;
-    vspeed = -2;&#13;
+  onground = false;&#13;
+} else {&#13;
+  if (vspeed &gt; 0) {&#13;
+    y = target;&#13;
+    vspeed = 0;&#13;
+  }&#13;
+  onground = true;&#13;
 }</string>
           </argument>
         </arguments>
