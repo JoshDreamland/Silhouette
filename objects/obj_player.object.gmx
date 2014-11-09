@@ -63,12 +63,132 @@ local double pelvis_y = y - torso_elevation;&#13;
 gravity = .75;&#13;
 &#13;
 local bool onground = false;&#13;
-local bool was_onground = false;</string>
+local bool was_onground = false;&#13;
+&#13;
+local bool teleporting = false;&#13;
+local bool can_teleport = true;&#13;
+local int teleport_time = 0;</string>
           </argument>
         </arguments>
       </action>
     </event>
     <event enumb="2" eventtype="3">
+      <action>
+        <libid>1</libid>
+        <id>612</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>-1</isquestion>
+        <exetype>1</exetype>
+        <functionname>action_if_variable</functionname>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>teleporting</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>false</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>double target = trace_ray(x);&#13;
+if (y &lt; target - 8) {&#13;
+  if (y &gt; room_height + 640) {&#13;
+    x = xstart;&#13;
+    y = ystart;&#13;
+    with (obj_chainball) {&#13;
+      x = xstart;&#13;
+      y = ystart;&#13;
+    }&#13;
+  }&#13;
+  onground = false;&#13;
+} else {&#13;
+  if (x != xprevious) {&#13;
+    double ptarget = trace_ray(xprevious);&#13;
+    double slope = (ptarget - target) / abs(x - xprevious);&#13;
+    if (slope &gt;= 2) {&#13;
+      x = xprevious;&#13;
+      hspeed = 0;&#13;
+      target = ptarget;&#13;
+    } else if (slope &gt; 0) {&#13;
+      double hsmax = 4 / (slope + 1);&#13;
+      if (hspeed &gt; hsmax) {&#13;
+        hspeed = hsmax;&#13;
+      } else if (hspeed &lt; -hsmax) {&#13;
+        hspeed = -hsmax;&#13;
+      }&#13;
+    }&#13;
+  }&#13;
+  if (vspeed &gt; 0) {&#13;
+    y = target;&#13;
+    vspeed = 0;&#13;
+  }&#13;
+  onground = true;&#13;
+}</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>421</id>
+        <kind>3</kind>
+        <userelative>0</userelative>
+        <useapplyto>0</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>0</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments/>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string/>
+          </argument>
+        </arguments>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -204,13 +324,40 @@ repeat (2) {&#13;
     rknee_x = knee_x;&#13;
     rknee_y = knee_y;&#13;
   }&#13;
-}&#13;
-m_yprevious = y;</string>
+}</string>
           </argument>
         </arguments>
       </action>
     </event>
     <event enumb="0" eventtype="3">
+      <action>
+        <libid>1</libid>
+        <id>612</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>-1</isquestion>
+        <exetype>1</exetype>
+        <functionname>action_if_variable</functionname>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>teleporting</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>false</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -238,17 +385,32 @@ if (input_dir &gt; hspeed) {&#13;
   hspeed -= .25;&#13;
 }&#13;
 &#13;
-bool jmpkey = keyboard_check(vk_up) or keyboard_check(ord('Z')) or keyboard_check(vk_space);&#13;
+bool jmpkey = keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord('Z')) or keyboard_check_pressed(vk_space);&#13;
 if (onground) {&#13;
   if (jmpkey) {&#13;
     vspeed = -12;&#13;
   }&#13;
-} else if (false and jmpkey) {&#13;
-  if (vspeed &gt; -2)&#13;
-    vspeed = -2;&#13;
+} else if (jmpkey &amp;&amp; can_teleport) {&#13;
+  teleporting = true;&#13;
+  teleport_time = 60 * 2;&#13;
 }</string>
           </argument>
         </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>421</id>
+        <kind>3</kind>
+        <userelative>0</userelative>
+        <useapplyto>0</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>0</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments/>
       </action>
       <action>
         <libid>1</libid>
@@ -266,23 +428,23 @@ if (onground) {&#13;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>double target = trace_ray(x);&#13;
-if (y &lt; target - 8) {&#13;
-  if (y &gt; room_height + 640) {&#13;
-    x = xstart;&#13;
-    y = ystart;&#13;
-    with (obj_chainball) {&#13;
-      x = xstart;&#13;
-      y = ystart;&#13;
-    }&#13;
-  }&#13;
-  onground = false;&#13;
+            <string>int input_dirX = (keyboard_check(vk_right) + keyboard_check(ord('D'))) - (keyboard_check(vk_left) + keyboard_check(ord('A')));&#13;
+int input_dirY = (keyboard_check(vk_down) + keyboard_check(ord('S'))) - (keyboard_check(vk_up) + keyboard_check(ord('W')));&#13;
+&#13;
+if (input_dirX != 0 || input_dirY != 0) {&#13;
+  direction = point_direction(0, 0, input_dirX, input_dirY);&#13;
+  room_caption = string(input_dirY);&#13;
+  speed = clamp(speed + .1, 0, 12);&#13;
 } else {&#13;
-  if (vspeed &gt; 0) {&#13;
-    y = target;&#13;
-    vspeed = 0;&#13;
+  speed *= .99;&#13;
+  if (speed &lt; .1) {&#13;
+    speed = 0;&#13;
   }&#13;
-  onground = true;&#13;
+}&#13;
+&#13;
+if (--teleport_time &lt; 0) {&#13;
+  teleport_time = 0;&#13;
+  teleporting = false;&#13;
 }</string>
           </argument>
         </arguments>
@@ -319,11 +481,11 @@ draw_circle(x - 2, pelvis_y, 3.5, 0);&#13;
 draw_circle(x + 2, pelvis_y, 3.5, 0);&#13;
 &#13;
 &#13;
-double collar_y = pelvis_y - torso_height&#13;
-draw_line_width(x , pelvis_y, x, pelvis_y - torso_height, 7);&#13;
-draw_line_width(x , pelvis_y, x, pelvis_y - torso_height, 7);&#13;
+double collar_y = pelvis_y - torso_height;&#13;
+draw_line_width(x , pelvis_y, x, collar_y, 7);&#13;
+draw_line_width(x , pelvis_y, x, collar_y, 7);&#13;
 &#13;
-room_caption = "Silhouette (" + string(fps) + "/60 fps)";</string>
+// room_caption = "Silhouette (" + string(fps) + "/60 fps)";</string>
           </argument>
         </arguments>
       </action>

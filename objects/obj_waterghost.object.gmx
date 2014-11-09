@@ -43,7 +43,7 @@ local int CREEP_PLAYER_OUT = 1;&#13;
 local int MAXIMUM_OVERCREEP = 2;&#13;
 local int CONGLOMERATING = 3;&#13;
 local int SENTIENT = 4;&#13;
-phase_dur[JUST_A_FOUNTAIN] = 60 * 15;&#13;
+phase_dur[JUST_A_FOUNTAIN] = 60 * 5;&#13;
 phase_dur[CREEP_PLAYER_OUT] = 60 * 3;&#13;
 phase_dur[MAXIMUM_OVERCREEP] = 60 * 9;&#13;
 phase_dur[CONGLOMERATING] = 60 * 3;&#13;
@@ -218,8 +218,12 @@ alarm[2] = phase_dur[phase];</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (phase == JUST_A_FOUNTAIN &amp;&amp; obj_player.x &lt; x) {&#13;
-  alarm[0] = 60 * 5; // Ten second delay while player struggles&#13;
+            <string>if (phase == JUST_A_FOUNTAIN) {&#13;
+  if (obj_player.x &lt; x) {&#13;
+    alarm[0] = phase_dur[JUST_A_FOUNTAIN]; // Ten second delay while player struggles&#13;
+  } else {&#13;
+    global.sky_creepiness = max(0, 180 - alarm[0]) / 180;&#13;
+  }&#13;
 }&#13;
 bool stillmoving = false;&#13;
 for (int i = 0; i &lt; num_parts; ++i) {&#13;
@@ -245,7 +249,6 @@ for (int i = 0; i &lt; num_parts; ++i) {&#13;
     part_h[i] = lengthdir_x(vel, angle);&#13;
     part_v[i] = lengthdir_y(vel, angle);&#13;
   }&#13;
-  double angle = random(360);&#13;
   part_v[i] += .5 - antigravity;&#13;
   if (phase == CREEP_PLAYER_OUT) {&#13;
     antigravity += .0625;&#13;
@@ -267,7 +270,7 @@ for (int i = 0; i &lt; num_parts; ++i) {&#13;
 }&#13;
 if (phase == CREEP_PLAYER_OUT) {&#13;
   if (stillmoving or alarm[1] == -1) {&#13;
-    alarm[1] = 60 * 4;&#13;
+    alarm[1] = phase_dur[CREEP_PLAYER_OUT];&#13;
   }&#13;
 }</string>
           </argument>
@@ -348,7 +351,6 @@ if (phase == CREEP_PLAYER_OUT) {&#13;
     part_y[i] += part_v[i];&#13;
     double dir = point_direction(part_x[i], part_y[i], x, y);&#13;
     double dist = point_distance(part_x[i], part_y[i], x, y);&#13;
-    double adur = 60 * 5;&#13;
     &#13;
     double acc = .125;&#13;
     if (dist &gt; 32) {&#13;
@@ -402,7 +404,6 @@ for (int i = 0; i &lt; num_parts; ++i) {&#13;
   part_y[i] += part_v[i];&#13;
   double dist = point_distance(part_x[i], part_y[i], x, y);&#13;
   double dir = point_direction(part_x[i], part_y[i], x, y);&#13;
-  double adur = 60 * 5;&#13;
   &#13;
   double acc = .125;&#13;
   if (dist &gt; 32) {&#13;

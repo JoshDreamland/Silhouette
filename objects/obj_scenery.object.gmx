@@ -32,8 +32,12 @@ for (int i = 0; i &lt; MAX_DEPTH; ++i) {&#13;
 }&#13;
 alarm[0] = 1;&#13;
 &#13;
+global.sky_creepiness = 0;&#13;
+&#13;
 local int skycol = $80705C;&#13;
-local int horizoncol = $A0B0CF;</string>
+local int horizoncol = $A0B0CF;&#13;
+local int scary_skycol = $50408C;&#13;
+local int scary_horizoncol = $8090DF;</string>
           </argument>
         </arguments>
       </action>
@@ -103,7 +107,9 @@ for (int i = 0; i &lt; 1000; ++i) {&#13;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_rectangle_color(0, 0, room_width, room_height, skycol, skycol, horizoncol, horizoncol, false);&#13;
+            <string>int d_skycol = merge_color(skycol, scary_skycol, global.sky_creepiness);&#13;
+int d_horizoncol = merge_color(horizoncol, scary_horizoncol, global.sky_creepiness);&#13;
+draw_rectangle_color(0, 0, room_width, room_height, d_skycol, d_skycol, d_horizoncol, d_horizoncol, false);&#13;
 draw_set_color(c_black);&#13;
 draw_primitive_begin(pr_trianglestrip);&#13;
 int last = min(MAX_DEPTH, (view_xview[0] + view_wview[0]) / 8 + 2);&#13;

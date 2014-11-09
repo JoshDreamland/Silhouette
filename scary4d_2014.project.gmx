@@ -22,10 +22,10 @@
   <fonts name="fonts"/>
   <timelines name="timelines"/>
   <objects name="objects">
+    <object>objects\obj_player</object>
     <object>objects\obj_scenery</object>
     <object>objects\obj_bush</object>
     <object>objects\obj_groundnode</object>
-    <object>objects\obj_player</object>
     <object>objects\obj_fountain</object>
     <object>objects\obj_waterghost</object>
     <object>objects\obj_chainball</object>
