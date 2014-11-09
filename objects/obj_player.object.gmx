@@ -60,14 +60,22 @@ local double leg_length = 12;&#13;
 &#13;
 local double pelvis_y = y - torso_elevation;&#13;
 &#13;
-gravity = .75;&#13;
-&#13;
 local bool onground = false;&#13;
 local bool was_onground = false;&#13;
 &#13;
 local bool teleporting = false;&#13;
 local bool can_teleport = true;&#13;
-local int teleport_time = 0;</string>
+local int teleport_time = 0;&#13;
+&#13;
+local var part_x;&#13;
+local var part_y;&#13;
+local var part_r;&#13;
+local var part_p;&#13;
+local int num_parts = 32;&#13;
+for (int i = 0; i &lt; num_parts; ++i) {&#13;
+  part_a[i] = false;&#13;
+  part_p[i] = random(pi);&#13;
+}</string>
           </argument>
         </arguments>
       </action>
@@ -117,7 +125,8 @@ local int teleport_time = 0;</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>double target = trace_ray(x);&#13;
+            <string>gravity = .75;&#13;
+double target = trace_ray(x);&#13;
 if (y &lt; target - 8) {&#13;
   if (y &gt; room_height + 640) {&#13;
     x = xstart;&#13;
@@ -185,7 +194,7 @@ if (y &lt; target - 8) {&#13;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string/>
+            <string>gravity = 0;</string>
           </argument>
         </arguments>
       </action>
@@ -433,7 +442,6 @@ int input_dirY = (keyboard_check(vk_down) + keyboard_check(ord('S'))) - (keyboar
 &#13;
 if (input_dirX != 0 || input_dirY != 0) {&#13;
   direction = point_direction(0, 0, input_dirX, input_dirY);&#13;
-  room_caption = string(input_dirY);&#13;
   speed = clamp(speed + .1, 0, 12);&#13;
 } else {&#13;
   speed *= .99;&#13;
@@ -480,10 +488,22 @@ draw_circle(rknee_x, rknee_y, 3.5, 0);&#13;
 draw_circle(x - 2, pelvis_y, 3.5, 0);&#13;
 draw_circle(x + 2, pelvis_y, 3.5, 0);&#13;
 &#13;
-&#13;
 double collar_y = pelvis_y - torso_height;&#13;
 draw_line_width(x , pelvis_y, x, collar_y, 7);&#13;
 draw_line_width(x , pelvis_y, x, collar_y, 7);&#13;
+&#13;
+for (int i = 0; i &lt; num_parts; ++i) {&#13;
+  if (part_a[i]) {&#13;
+    draw_circle(part_x[i], part_y[i], 5 * sin(part_p[i]), 0);&#13;
+  }&#13;
+  part_p[i] -= pi / 12;&#13;
+  if (part_p[i] &lt; 0) {&#13;
+    part_a[i] = teleporting;&#13;
+    part_x[i] = x + random(48) - 24 + hspeed;&#13;
+    part_y[i] = y + 12 - random(64) + vspeed;&#13;
+    part_p[i] = pi;&#13;
+  }&#13;
+}&#13;
 &#13;
 // room_caption = "Silhouette (" + string(fps) + "/60 fps)";</string>
           </argument>

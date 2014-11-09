@@ -60,6 +60,7 @@ for (int i = 0; i &lt; num_parts; ++i) {&#13;
   part_v[i] = lengthdir_y(vel, angle);&#13;
 }&#13;
 &#13;
+local bool locked_in = false;&#13;
 local double antigravity = 0;&#13;
 &#13;
 local int cooldown = 0;&#13;
@@ -219,10 +220,16 @@ alarm[2] = phase_dur[phase];</string>
           <argument>
             <kind>1</kind>
             <string>if (phase == JUST_A_FOUNTAIN) {&#13;
-  if (obj_player.x &lt; x) {&#13;
+  if (obj_player.x &lt; x and !locked_in) {&#13;
     alarm[0] = phase_dur[JUST_A_FOUNTAIN]; // Ten second delay while player struggles&#13;
   } else {&#13;
     global.sky_creepiness = max(0, 180 - alarm[0]) / 180;&#13;
+    if (global.sky_creepiness &gt; 0 &amp;&amp; !locked_in) {&#13;
+      locked_in = true;&#13;
+      int wave = instance_create(x, y, obj_wave);&#13;
+      wave.r = 2 * view_wview[0];&#13;
+      wave.rs = -wave.r / 180;&#13;
+    }&#13;
   }&#13;
 }&#13;
 bool stillmoving = false;&#13;

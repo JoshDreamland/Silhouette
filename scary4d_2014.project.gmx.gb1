@@ -30,6 +30,7 @@
     <object>objects\obj_waterghost</object>
     <object>objects\obj_chainball</object>
     <object>objects\obj_ghostbullet</object>
+    <object>objects\obj_wave</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_0</room>
