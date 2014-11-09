@@ -16,7 +16,8 @@
     <script>scripts\draw_grass_blade.gml</script>
     <script>scripts\draw_player_head.gml</script>
     <script>scripts\trace_ray.gml</script>
-    <script>scripts\scr_4.gml</script>
+    <script>scripts\instance_paint_line.gml</script>
+    <script>scripts\instance_paint_circle.gml</script>
   </scripts>
   <shaders name="shaders"/>
   <fonts name="fonts"/>
@@ -31,6 +32,7 @@
     <object>objects\obj_chainball</object>
     <object>objects\obj_ghostbullet</object>
     <object>objects\obj_wave</object>
+    <object>objects\obj_playervapor</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_0</room>
