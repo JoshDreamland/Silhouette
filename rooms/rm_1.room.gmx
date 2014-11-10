@@ -25,7 +25,7 @@
     <showViews>0</showViews>
     <deleteUnderlyingObj>0</deleteUnderlyingObj>
     <deleteUnderlyingTiles>0</deleteUnderlyingTiles>
-    <page>0</page>
+    <page>4</page>
     <xoffset>0</xoffset>
     <yoffset>0</yoffset>
   </makerSettings>
@@ -40,7 +40,7 @@
     <background foreground="0" hspeed="0" htiled="-1" name="" stretch="0" visible="0" vspeed="0" vtiled="-1" x="0" y="0"/>
   </backgrounds>
   <views>
-    <view hborder="320" hport="480" hspeed="-1" hview="600" objName="obj_player" vborder="240" visible="-1" vspeed="-1" wport="640" wview="800" xport="0" xview="0" yport="0" yview="0"/>
+    <view hborder="320" hport="600" hspeed="-1" hview="600" objName="obj_player" vborder="240" visible="-1" vspeed="-1" wport="800" wview="800" xport="0" xview="0" yport="0" yview="0"/>
     <view hborder="32" hport="480" hspeed="-1" hview="480" objName="&lt;undefined&gt;" vborder="32" visible="0" vspeed="-1" wport="640" wview="640" xport="0" xview="0" yport="0" yview="0"/>
     <view hborder="32" hport="480" hspeed="-1" hview="480" objName="&lt;undefined&gt;" vborder="32" visible="0" vspeed="-1" wport="640" wview="640" xport="0" xview="0" yport="0" yview="0"/>
     <view hborder="32" hport="480" hspeed="-1" hview="480" objName="&lt;undefined&gt;" vborder="32" visible="0" vspeed="-1" wport="640" wview="640" xport="0" xview="0" yport="0" yview="0"/>
@@ -50,87 +50,87 @@
     <view hborder="32" hport="480" hspeed="-1" hview="480" objName="&lt;undefined&gt;" vborder="32" visible="0" vspeed="-1" wport="640" wview="640" xport="0" xview="0" yport="0" yview="0"/>
   </views>
   <instances>
-    <instance code="" colour="4294967295" locked="0" name="inst_100001" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="0" y="-16"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100002" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="112" y="-16"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100003" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="128" y="336"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100004" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="144" y="384"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100005" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="176" y="400"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100006" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="192" y="432"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100007" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="208" y="448"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100008" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="240" y="464"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100009" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="288" y="448"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100010" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="320" y="448"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100011" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="336" y="464"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100012" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="368" y="480"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100013" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="400" y="480"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100014" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="448" y="464"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100015" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="512" y="464"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100016" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="544" y="472"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100017" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="576" y="464"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100018" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="496" y="456"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100019" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="592" y="472"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100020" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="624" y="520"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100021" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="640" y="880"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100022" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="688" y="872"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100023" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="704" y="1120"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100024" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="736" y="1144"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100025" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="816" y="1144"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100026" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="880" y="1152"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100027" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="896" y="1144"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100028" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="912" y="1128"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100029" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="960" y="1136"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100030" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="976" y="1160"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100031" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1008" y="1168"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100032" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1056" y="1152"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100033" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1104" y="1144"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100034" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1184" y="1136"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100035" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1264" y="1136"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100036" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1312" y="1152"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100037" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1392" y="1160"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100038" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1488" y="1144"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100039" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1520" y="1152"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100040" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1584" y="1136"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100041" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1616" y="1160"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100042" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1648" y="1168"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100043" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1696" y="1152"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100044" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1744" y="1136"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100045" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1792" y="1160"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100046" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1808" y="1152"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100047" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1840" y="1176"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100048" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1920" y="1168"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100049" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1968" y="1152"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100050" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="2016" y="1168"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100051" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="2064" y="1160"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100052" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="2080" y="1136"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100053" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="3376" y="1136"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100054" objName="obj_scenery" rotation="0.0" scaleX="1.0" scaleY="1.0" x="0" y="0"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100055" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="656" y="872"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100056" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="672" y="872"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100057" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="304" y="448"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100058" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="240" y="464"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100059" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="160" y="392"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100060" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="384" y="480"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100061" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="424" y="472"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100062" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="496" y="456"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100063" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="536" y="472"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100064" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="584" y="472"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100065" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="776" y="1144"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100066" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="856" y="1152"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100067" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="936" y="1136"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100068" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="992" y="1168"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100069" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1080" y="1152"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100070" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1224" y="1136"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100071" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1344" y="1160"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100072" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1448" y="1152"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100073" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1632" y="1168"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100074" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1720" y="1144"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100075" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1872" y="1176"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100076" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="2040" y="1168"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100077" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="3384" y="1080"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100078" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="4400" y="1080"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100079" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="4736" y="0"/>
-    <instance code="" colour="4294967295" locked="0" name="inst_100080" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="4648" y="1080"/>
-    <instance code="self.message = &quot;Made it. Too bad that's all he wrote.&quot;;" colour="4294967295" locked="0" name="inst_100816" objName="obj_messagebox" rotation="0.0" scaleX="1.0" scaleY="1.0" x="352" y="360"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100196" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="0" y="-16"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100197" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="112" y="-16"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100198" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="128" y="336"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100199" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="144" y="384"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100200" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="176" y="400"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100201" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="192" y="432"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100202" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="208" y="448"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100203" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="240" y="464"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100204" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="288" y="448"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100205" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="320" y="448"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100206" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="336" y="464"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100207" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="368" y="480"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100208" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="400" y="480"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100209" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="448" y="464"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100210" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="512" y="464"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100211" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="544" y="472"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100212" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="576" y="464"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100213" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="496" y="456"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100214" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="592" y="472"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100215" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="624" y="520"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100216" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="640" y="880"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100217" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="688" y="872"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100218" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="704" y="1120"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100219" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="736" y="1144"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100220" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="816" y="1144"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100221" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="880" y="1152"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100222" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="896" y="1144"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100223" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="912" y="1128"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100224" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="960" y="1136"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100225" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="976" y="1160"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100226" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1008" y="1168"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100227" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1056" y="1152"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100228" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1104" y="1144"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100229" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1184" y="1136"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100230" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1264" y="1136"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100231" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1312" y="1152"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100232" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1392" y="1160"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100233" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1488" y="1144"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100234" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1520" y="1152"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100235" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1584" y="1136"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100236" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1616" y="1160"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100237" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1648" y="1168"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100238" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1696" y="1152"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100239" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1744" y="1136"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100240" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1792" y="1160"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100241" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1808" y="1152"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100242" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1840" y="1176"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100243" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1920" y="1168"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100244" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1968" y="1152"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100245" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="2016" y="1168"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100246" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="2064" y="1160"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100247" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="2080" y="1136"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100248" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="3376" y="1136"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100249" objName="obj_scenery" rotation="0.0" scaleX="1.0" scaleY="1.0" x="0" y="0"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100250" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="656" y="872"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100251" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="672" y="872"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100252" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="304" y="448"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100253" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="240" y="464"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100254" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="160" y="392"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100255" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="384" y="480"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100256" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="424" y="472"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100257" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="496" y="456"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100258" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="536" y="472"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100259" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="584" y="472"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100260" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="776" y="1144"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100261" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="856" y="1152"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100262" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="936" y="1136"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100263" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="992" y="1168"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100264" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1080" y="1152"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100265" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1224" y="1136"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100266" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1344" y="1160"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100267" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1448" y="1152"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100268" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1632" y="1168"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100269" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1720" y="1144"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100270" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="1872" y="1176"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100271" objName="obj_bush" rotation="0.0" scaleX="1.0" scaleY="1.0" x="2040" y="1168"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100272" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="3384" y="1080"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100273" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="4400" y="1080"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100274" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="4736" y="0"/>
+    <instance code="" colour="4294967295" locked="0" name="inst_100275" objName="obj_groundnode" rotation="0.0" scaleX="1.0" scaleY="1.0" x="4648" y="1080"/>
+    <instance code="self.message = &quot;Made it. Too bad that's all he wrote.&quot;;" colour="4294967295" locked="0" name="inst_100276" objName="obj_messagebox" rotation="0.0" scaleX="1.0" scaleY="1.0" x="352" y="360"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

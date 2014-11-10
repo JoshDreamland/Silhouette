@@ -435,7 +435,25 @@ repeat (2) {&#13;
           <argument>
             <kind>1</kind>
             <string>x = xprevious;&#13;
-y = yprevious;</string>
+y = yprevious;&#13;
+&#13;
+if (respawn &gt; 300) {&#13;
+  respawn = 0;&#13;
+  double dx = xstart - x;&#13;
+  double dy = ystart - y;&#13;
+  xprevious = xstart;&#13;
+  yprevious = ystart;&#13;
+  x = xstart;&#13;
+  y = ystart;&#13;
+  lfoot_x += dx; lknee_x += dx;&#13;
+  lfoot_y += dy; lknee_y += dy;&#13;
+  rfoot_x += dx; rknee_x += dx;&#13;
+  rfoot_y += dy; rknee_y += dy;&#13;
+  cons_show_message(string(x) + ":" + string(xstart) + "::" + string(y) + ":" + string(ystart));&#13;
+  health = 100;&#13;
+  visible = true;&#13;
+  room_restart();&#13;
+}</string>
           </argument>
         </arguments>
       </action>
@@ -461,7 +479,8 @@ y = yprevious;</string>
 }&#13;
 if (x &lt; 0 or x &lt; global.room_leftbound) {&#13;
   x = max(0, global.room_leftbound);&#13;
-}</string>
+}&#13;
+</string>
           </argument>
         </arguments>
       </action>
@@ -679,13 +698,32 @@ if (++respawn &gt; 60) {&#13;
     instance_paint_circle(pelvis_x, collar_y - 13, 11, 3, obj_playervapor);&#13;
   } else if(respawn == 80) {&#13;
     visible = false;&#13;
-  } else if(respawn &gt; 300) {&#13;
-    respawn = 0;&#13;
-    health = 100;&#13;
-    room_restart();&#13;
   }&#13;
 }&#13;
-room_caption = "speed: " + string(hspeed) + ", " + string(vspeed);</string>
+// room_caption = "speed: " + string(hspeed) + ", " + string(vspeed);</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event enumb="4" eventtype="7">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>xstart = x;&#13;
+ystart = y;</string>
           </argument>
         </arguments>
       </action>
