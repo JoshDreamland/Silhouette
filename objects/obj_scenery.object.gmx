@@ -59,11 +59,7 @@ local int scary_horizoncol = $8090DF;</string>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>make_ground();&#13;
-&#13;
-for (int i = 0; i &lt; 1000; ++i) {&#13;
-  cons_show_message("depth[" + string(i) + "] =&gt; " + string(terrain_depth[i]));&#13;
-}</string>
+            <string>make_ground();</string>
           </argument>
         </arguments>
       </action>

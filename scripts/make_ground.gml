@@ -1,8 +1,13 @@
 global int MAX_DEPTH;
 global var terrain_depth;
 
+bool have_leftbound = false;
 with (obj_groundnode) {
   terrain_depth[int(self.x / 8)] = self.y;
+  if (!have_leftbound and self.y > 0) {
+    global.room_leftbound = self.x;
+    have_leftbound = true;
+  }
 }
 
 for (int i = 0; i < MAX_DEPTH; ++i) {

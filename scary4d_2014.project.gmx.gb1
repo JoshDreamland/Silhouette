@@ -16,11 +16,14 @@
     <script>scripts\draw_grass_blade.gml</script>
     <script>scripts\draw_player_head.gml</script>
     <script>scripts\trace_ray.gml</script>
+    <script>scripts\cast_intersect.gml</script>
     <script>scripts\instance_paint_line.gml</script>
     <script>scripts\instance_paint_circle.gml</script>
   </scripts>
   <shaders name="shaders"/>
-  <fonts name="fonts"/>
+  <fonts name="fonts">
+    <font>fonts\font_0</font>
+  </fonts>
   <timelines name="timelines"/>
   <objects name="objects">
     <object>objects\obj_player</object>
@@ -33,6 +36,7 @@
     <object>objects\obj_ghostbullet</object>
     <object>objects\obj_wave</object>
     <object>objects\obj_playervapor</object>
+    <object>objects\obj_messagebox</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_0</room>

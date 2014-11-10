@@ -94,6 +94,10 @@ repeat num_links {&#13;
       }&#13;
     }&#13;
   }&#13;
+}&#13;
+&#13;
+if (!chain_broke_end) {&#13;
+  obj_player.can_teleport = false;&#13;
 }</string>
           </argument>
         </arguments>

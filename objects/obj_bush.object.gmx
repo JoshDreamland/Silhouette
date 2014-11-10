@@ -32,7 +32,9 @@ for (int i = 0; i &lt; num_blades; ++i) {&#13;
   blade_length[i] = random(16) + 16;&#13;
   wind_angle[i] = 0;&#13;
   wind_phase[i] = random(pi / 2);&#13;
-}</string>
+}&#13;
+&#13;
+local bool evil = false;</string>
           </argument>
         </arguments>
       </action>
@@ -54,8 +56,16 @@ for (int i = 0; i &lt; num_blades; ++i) {&#13;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for (int i = 0; i &lt; num_blades; ++i) {&#13;
-  wind_angle[i] = 12 * cos(wind_phase[i] += pi / 120);&#13;
+            <string>if (!evil) {&#13;
+  for (int i = 0; i &lt; num_blades; ++i) {&#13;
+    wind_angle[i] = 12 * cos(wind_phase[i] += pi / 120);&#13;
+  }&#13;
+} else {&#13;
+  vspeed -= .05;&#13;
+  wind_angle += clamp(angle_difference(wind_angle, point_direction(x, y, obj_player.x, obj_player.y)), -5, 5);&#13;
+  if (y &lt;= obj_player.y - 300) {&#13;
+    vspeed = 0;&#13;
+  }&#13;
 }</string>
           </argument>
         </arguments>

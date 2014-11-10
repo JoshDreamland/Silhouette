@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <maskName>&lt;undefined&gt;</maskName>
   <parentName>&lt;undefined&gt;</parentName>
   <events>
@@ -168,7 +168,9 @@ health = 100;</string>
           <argument>
             <kind>1</kind>
             <string>gravity = .75;&#13;
+&#13;
 double target = trace_ray(x);&#13;
+double ptarget = trace_ray(xprevious);&#13;
 if (y &lt; target - 8) {&#13;
   if (y &gt; room_height + 640) {&#13;
     health = 0;&#13;
@@ -177,7 +179,6 @@ if (y &lt; target - 8) {&#13;
   onground = false;&#13;
 } else {&#13;
   if (x != xprevious) {&#13;
-    double ptarget = trace_ray(xprevious);&#13;
     double slope = (ptarget - target) / abs(x - xprevious);&#13;
     if (slope &gt;= 2) {&#13;
       x = xprevious;&#13;
@@ -197,6 +198,18 @@ if (y &lt; target - 8) {&#13;
     vspeed = 0;&#13;
   }&#13;
   onground = true;&#13;
+}&#13;
+&#13;
+if (hspeed &gt; 0) {&#13;
+  double starget = trace_ray(x + 12);&#13;
+  if (starget &lt; y - 24) {&#13;
+    hspeed = 0;&#13;
+  }&#13;
+} else if (hspeed &lt; 0) {&#13;
+  double starget = trace_ray(x - 12);&#13;
+  if (starget &lt; y - 24) {&#13;
+    hspeed = 0;&#13;
+  }&#13;
 }</string>
           </argument>
         </arguments>
@@ -426,6 +439,32 @@ y = yprevious;</string>
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <useapplyto>-1</useapplyto>
+        <isquestion>0</isquestion>
+        <exetype>2</exetype>
+        <functionname/>
+        <codestring/>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (x &gt; room_width + 32 &amp;&amp; room_exists(room_next(room))) {&#13;
+  x -= room_width;&#13;
+  room_goto_next();&#13;
+}&#13;
+if (x &lt; 0 or x &lt; global.room_leftbound) {&#13;
+  x = max(0, global.room_leftbound);&#13;
+}</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event enumb="0" eventtype="3">
       <action>
@@ -518,9 +557,13 @@ if (onground) {&#13;
   if (jmpkey) {&#13;
     vspeed = -12;&#13;
   }&#13;
-} else if (jmpkey &amp;&amp; can_teleport) {&#13;
+  can_teleport = true;&#13;
+} else if (jmpkey &amp;&amp; (can_teleport || teleport_time &gt; 0)) {&#13;
   teleporting = true;&#13;
-  teleport_time = 60 * 2;&#13;
+  if (can_teleport) {&#13;
+    teleport_time = 60 * 2;&#13;
+    can_teleport = false;&#13;
+  }&#13;
 }</string>
           </argument>
         </arguments>
@@ -561,7 +604,7 @@ int input_dirY = (keyboard_check(vk_down) + keyboard_check(ord('S'))) - (keyboar
 &#13;
 if (input_dirX != 0 || input_dirY != 0) {&#13;
   double dir = point_direction(0, 0, input_dirX, input_dirY);&#13;
-  motion_add(dir, speed);&#13;
+  motion_add(dir, 3);&#13;
   speed = clamp(speed + .1, 0, 12);&#13;
 } else {&#13;
   speed *= .99;&#13;
